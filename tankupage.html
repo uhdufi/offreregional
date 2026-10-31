@@ -1,289 +1,334 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>شكراً على تسجيلك | Offre Regional</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b36">
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1133091039167288');
-  fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1133091039167288&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
+<title>تم التسجيل بنجاح | Offre Regional</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      background: #f5f6f8;
-      color: #171717;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      line-height: 1.7;
-    }
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    .thank-card {
-      width: 100%;
-      max-width: 560px;
-      background: white;
-      padding: 40px 30px;
-      border-radius: 22px;
-      text-align: center;
-      border: 1px solid #eaeaea;
-      box-shadow: 0 15px 50px rgba(0,0,0,.06);
-    }
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 
-    .success-icon {
-      width: 70px;
-      height: 70px;
-      background: #111;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 30px;
-      margin: 0 auto 22px;
-    }
+fbq('init', '1133091039167288');
+fbq('track', 'PageView');
+</script>
 
-    h1 {
-      font-size: 29px;
-      margin-bottom: 10px;
-    }
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1133091039167288&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
 
-    .description {
-      color: #777;
-      margin-bottom: 25px;
-      font-size: 15px;
-    }
+<style>
+* {
+box-sizing:border-box;
+}
 
-    .details {
-      background: #f7f7f7;
-      border-radius: 13px;
-      padding: 18px;
-      text-align: right;
-      margin-bottom: 25px;
-    }
+body {
+margin:0;
+min-height:100vh;
+display:grid;
+place-items:center;
+padding:22px;
+background:
+radial-gradient(circle at 15% 10%,#4268f54a,transparent 30%),
+linear-gradient(135deg,#101b36,#1b3155);
+font-family:"Tajawal",sans-serif;
+color:#15213b;
+}
 
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 8px 0;
-      border-bottom: 1px solid #e8e8e8;
-      font-size: 14px;
-    }
+.card {
+width:min(100%,520px);
+background:#fff;
+border-radius:28px;
+padding:42px 35px;
+text-align:center;
+box-shadow:0 30px 90px #050c1c70;
+}
 
-    .detail-row:last-child {
-      border-bottom: none;
-    }
+.check {
+width:82px;
+height:82px;
+margin:0 auto 22px;
+border-radius:26px;
+background:#e8fbf5;
+color:#0b9c70;
+display:grid;
+place-items:center;
+font-size:42px;
+font-weight:900;
+}
 
-    .detail-label {
-      color: #777;
-    }
+.brand {
+font:800 16px "DM Sans";
+direction:ltr;
+color:#172747;
+letter-spacing:.5px;
+}
 
-    .detail-value {
-      font-weight: bold;
-      text-align: left;
-      overflow-wrap: anywhere;
-    }
+.brand span {
+color:#4268f5;
+}
 
-    .whatsapp-button {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      background: #111;
-      color: white;
-      border: none;
-      border-radius: 11px;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      transition: .2s;
-    }
+.card h1 {
+font-size:32px;
+margin:25px 0 10px;
+color:#101b36;
+}
 
-    .whatsapp-button:hover {
-      background: #333;
-    }
+.card p {
+color:#68748b;
+line-height:1.9;
+margin:0;
+}
 
-    .note {
-      color: #888;
-      font-size: 12px;
-      margin-top: 16px;
-    }
+.details {
+margin:25px 0;
+padding:17px;
+border:1px solid #e6eaf2;
+border-radius:15px;
+background:#f8faff;
+text-align:right;
+line-height:2;
+font-size:14px;
+}
 
-    .missing {
-      color: #b42318;
-      margin-top: 20px;
-      font-size: 14px;
-    }
+.details b {
+color:#172747;
+}
 
-    @media (max-width: 480px) {
-      .thank-card {
-        padding: 30px 19px;
-      }
+.count {
+font:800 46px "DM Sans";
+color:#4268f5;
+margin:8px 0 0;
+}
 
-      h1 {
-        font-size: 24px;
-      }
-    }
-  </style>
+.small {
+font-size:12px;
+color:#8792a7;
+margin-top:0!important;
+}
+
+.btn {
+display:inline-flex;
+justify-content:center;
+align-items:center;
+width:100%;
+padding:15px;
+border:0;
+border-radius:13px;
+background:linear-gradient(135deg,#6380ff,#4268f5);
+color:#fff;
+font:800 15px "Tajawal";
+margin-top:18px;
+cursor:pointer;
+}
+
+.btn:disabled {
+opacity:.6;
+cursor:wait;
+}
+
+.fallback {
+display:block;
+color:#4268f5;
+font-size:12px;
+margin-top:13px;
+}
+
+@media(max-width:480px) {
+.card {
+padding:32px 22px;
+}
+
+.card h1 {
+font-size:27px;
+}
+}
+</style>
 </head>
 
 <body>
 
-  <main class="thank-card">
+<main class="card">
 
-    <div class="success-icon">✓</div>
+<div class="brand">
+OFFRE <span>REGIONAL</span>
+</div>
 
-    <h1>شكراً على تسجيلك!</h1>
+<div class="check">✓</div>
 
-    <p class="description">
-      تم حفظ طلبك بنجاح. بقيت خطوة واحدة لإتمام التواصل معنا.
-    </p>
+<h1>مبروك! توصلنا بطلب التسجيل</h1>
 
-    <section class="details" id="registrationDetails">
-      <div class="detail-row">
-        <span class="detail-label">الاسم الكامل</span>
-        <span class="detail-value" id="customerName">—</span>
-      </div>
+<p>
+شكراً على ثقتك في Offre Regional.
+بقيت خطوة صغيرة لتأكيد طلبك عبر واتساب.
+</p>
 
-      <div class="detail-row">
-        <span class="detail-label">رقم الهاتف</span>
-        <span class="detail-value" id="customerPhone">—</span>
-      </div>
+<div class="details" id="registrationDetails">
+جاري تحميل معلومات التسجيل…
+</div>
 
-      <div class="detail-row">
-        <span class="detail-label">الشعبة</span>
-        <span class="detail-value" id="customerBranch">—</span>
-      </div>
+<p>سيتم توجيهك إلى واتساب بعد</p>
 
-      <div class="detail-row">
-        <span class="detail-label">العرض</span>
-        <span class="detail-value">Offre Regional</span>
-      </div>
+<div class="count" id="countdown">10</div>
 
-      <div class="detail-row">
-        <span class="detail-label">الثمن</span>
-        <span class="detail-value">499 DH</span>
-      </div>
-    </section>
+<p class="small">
+ثوانٍ… يمكنك الضغط على الزر للانتقال مباشرة.
+</p>
 
-    <button class="whatsapp-button" id="whatsappButton" type="button">
-      تأكيد التسجيل عبر WhatsApp
-    </button>
+<button class="btn" id="whatsappButton" type="button">
+تأكيد الطلب عبر واتساب ↗
+</button>
 
-    <p class="note">
-      اضغط على الزر للتواصل معنا وإتمام الخطوات.
-    </p>
+<a class="fallback" href="index.html">
+العودة إلى الموقع
+</a>
 
-    <p class="missing" id="missingMessage" style="display:none;">
-      لم نعثر على بيانات التسجيل. المرجو العودة إلى صفحة التسجيل.
-    </p>
+</main>
 
-  </main>
+<script>
 
-  <script>
-    const WHATSAPP_NUMBER = "212663271459";
+// رقم واتساب
+const WHATSAPP_NUMBER = "212663271459";
 
-    const rawData = sessionStorage.getItem(
-      "offreRegionalRegistration"
-    );
+// استرجاع بيانات التسجيل
+let data = null;
 
-    const button = document.getElementById("whatsappButton");
-    const missingMessage = document.getElementById("missingMessage");
+try {
+  data = JSON.parse(
+    sessionStorage.getItem("offreRegionalRegistration") || "null"
+  );
+} catch (error) {
+  console.error("Session error:", error);
+}
 
-    let registration = null;
+const details = document.getElementById("registrationDetails");
+const button = document.getElementById("whatsappButton");
+const countdown = document.getElementById("countdown");
 
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, function(character) {
-        const replacements = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#039;"
-        };
+let remaining = 10;
+let timer = null;
+let alreadyRedirected = false;
 
-        return replacements[character];
-      });
-    }
+// عرض بيانات التسجيل
+if (data && data.id) {
 
-    if (rawData) {
-      try {
-        registration = JSON.parse(rawData);
+  details.innerHTML =
+    "<b>الاسم:</b> " + escapeHTML(data.name) +
+    "<br><b>الهاتف:</b> " + escapeHTML(data.phone) +
+    "<br><b>الشعبة:</b> " + escapeHTML(data.branch) +
+    "<br><b>المستوى:</b> الأولى باك" +
+    "<br><b>العرض:</b> 499 DH";
 
-        document.getElementById("customerName").textContent =
-          registration.name || "—";
+} else {
 
-        document.getElementById("customerPhone").textContent =
-          registration.phone || "—";
+  details.textContent =
+    "لم نعثر على تفاصيل التسجيل. يمكنك العودة إلى الموقع.";
 
-        document.getElementById("customerBranch").textContent =
-          registration.branch || "—";
+  button.disabled = true;
+  countdown.textContent = "—";
+}
 
-      } catch (error) {
-        console.error("Session data error:", error);
-      }
-    }
+// حماية البيانات
+function escapeHTML(value) {
 
-    if (!registration || !registration.id) {
-      button.disabled = true;
-      button.style.opacity = "0.5";
-      missingMessage.style.display = "block";
-    }
+  return String(value).replace(/[&<>"']/g, function(char) {
 
-    button.addEventListener("click", function() {
-      if (!registration || !registration.id) {
-        return;
-      }
+    return ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    })[char];
 
-      const message =
-        "السلام عليكم، أؤكد تسجيلي في Offre Regional.\n\n" +
-        "الاسم: " + registration.name + "\n" +
-        "الهاتف: " + registration.phone + "\n" +
-        "الشعبة: " + registration.branch + "\n" +
-        "المستوى: " + registration.level + "\n" +
-        "الثمن: " + registration.price + "\n" +
-        "رقم التسجيل: " + registration.id;
+  });
 
-      // Meta Pixel: Contact عند الضغط على واتساب
-      if (typeof fbq === "function") {
-        fbq("track", "Contact", {}, {
-          eventID: registration.id + "_contact"
-        });
-      }
+}
 
-      const whatsappURL =
-        "https://wa.me/" + WHATSAPP_NUMBER +
-        "?text=" + encodeURIComponent(message);
+// الانتقال إلى واتساب
+function goToWhatsApp() {
 
-      window.open(whatsappURL, "_blank");
+  if (!data || !data.id || alreadyRedirected) {
+    return;
+  }
+
+  if (!/^212[5-7]\d{8}$/.test(WHATSAPP_NUMBER)) {
+    alert("يرجى التأكد من إعداد رقم واتساب الصحيح.");
+    return;
+  }
+
+  alreadyRedirected = true;
+
+  clearInterval(timer);
+  button.disabled = true;
+  button.textContent = "جاري فتح WhatsApp...";
+
+  const message = [
+    "السلام عليكم، أود تأكيد طلبي في عرض Offre Regional.",
+    "الاسم: " + data.name,
+    "رقم الهاتف: " + data.phone,
+    "الشعبة: " + data.branch,
+    "المستوى: الأولى باك",
+    "العرض: 499 DH",
+    "رقم التسجيل: " + data.id
+  ].join("\n");
+
+  // Meta Pixel: Contact عند الضغط أو الانتقال التلقائي
+  if (typeof fbq === "function") {
+    fbq("track", "Contact", {}, {
+      eventID: data.id + "_contact"
     });
-  </script>
+  }
+
+  const whatsappURL =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.location.href = whatsappURL;
+}
+
+// زر واتساب
+button.addEventListener("click", function() {
+  goToWhatsApp();
+});
+
+// العد التنازلي
+if (data && data.id) {
+
+  timer = setInterval(function() {
+
+    remaining--;
+
+    countdown.textContent = remaining;
+
+    if (remaining <= 0) {
+      clearInterval(timer);
+      goToWhatsApp();
+    }
+
+  }, 1000);
+
+}
+
+</script>
 
 </body>
 </html>
