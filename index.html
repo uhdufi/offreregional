@@ -1,341 +1,1060 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offre Regional | التسجيل</title>
-  <meta name="description" content="سجل الآن في Offre Regional للأولى باك.">
-
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1133091039167288');
-  fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1133091039167288&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      background: #f5f6f8;
-      color: #171717;
-      min-height: 100vh;
-      line-height: 1.7;
-    }
-
-    .topbar {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 12px 15px;
-      font-size: 14px;
-    }
-
-    .container {
-      width: min(92%, 1050px);
-      margin: 55px auto;
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 35px;
-      align-items: center;
-    }
-
-    .intro h1 {
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.3;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
-    }
-
-    .intro h1 span {
-      color: #777;
-    }
-
-    .intro p {
-      color: #666;
-      font-size: 17px;
-      margin-bottom: 25px;
-    }
-
-    .features {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .features li {
-      background: white;
-      border: 1px solid #e8e8e8;
-      padding: 13px 16px;
-      border-radius: 12px;
-    }
-
-    .form-card {
-      background: white;
-      padding: 30px;
-      border: 1px solid #e9e9e9;
-      border-radius: 20px;
-      box-shadow: 0 15px 45px rgba(0,0,0,.05);
-    }
-
-    .form-card h2 {
-      font-size: 25px;
-      margin-bottom: 5px;
-    }
-
-    .form-card .subtitle {
-      color: #777;
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-
-    .price {
-      background: #f5f5f5;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .price strong {
-      font-size: 25px;
-    }
-
-    .field {
-      margin-bottom: 17px;
-    }
-
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 7px;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 15px;
-      background: white;
-      outline: none;
-      font-family: inherit;
-    }
-
-    input:focus, select:focus {
-      border-color: #111;
-    }
-
-    input[readonly] {
-      background: #f4f4f4;
-      color: #777;
-    }
-
-    .error {
-      display: none;
-      color: #c62828;
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    .form-submit {
-      width: 100%;
-      border: none;
-      background: #111;
-      color: white;
-      padding: 16px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: .2s;
-      font-family: inherit;
-    }
-
-    .form-submit:hover {
-      background: #333;
-    }
-
-    .form-submit:disabled {
-      opacity: .6;
-      cursor: wait;
-    }
-
-    .privacy {
-      color: #888;
-      font-size: 11px;
-      text-align: center;
-      margin-top: 13px;
-    }
-
-    .status-message {
-      display: none;
-      padding: 12px;
-      margin-top: 15px;
-      border-radius: 9px;
-      font-size: 13px;
-      background: #fff0f0;
-      color: #b42318;
-    }
-
-    footer {
-      text-align: center;
-      color: #888;
-      font-size: 12px;
-      padding: 25px 15px;
-    }
-
-    @media (max-width: 750px) {
-      .container {
-        grid-template-columns: 1fr;
-        margin: 30px auto;
-        gap: 25px;
-      }
-
-      .intro {
-        text-align: center;
-      }
-
-      .intro p {
-        font-size: 15px;
-      }
-
-      .form-card {
-        padding: 23px 18px;
-      }
-    }
-  </style>
-</head>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1133091039167288');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1133091039167288&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b36">
+<meta name="description" content="Offre Regional - الجهوي فجيب. عرض الأولى باك بـ499 درهم.">
+<title>Offre Regional | الجهوي فجيب</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--navy:#101b36;
+--navy2:#172747;
+--blue:#4268f5;
+--cyan:#65d9e8;
+--ink:#15213b;
+--muted:#68748b;
+--paper:#f5f7fc;
+--line:#e6eaf2;
+--white:#fff;
+--gold:#ffd36a;
+}
+
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+margin:0;
+background:var(--paper);
+color:var(--ink);
+font-family:"Tajawal",sans-serif;
+}
+a {text-decoration:none;color:inherit}
+button,input,select {font:inherit}
+.container {
+width:min(1160px,calc(100% - 40px));
+margin:auto;
+}
+
+.topbar {
+background:#0b1429;
+color:#cbd5ed;
+font-size:13px;
+padding:10px 0;
+}
+.topbar .container {
+display:flex;
+justify-content:space-between;
+gap:12px;
+flex-wrap:wrap;
+}
+.topbar strong {color:var(--gold)}
+
+header {
+position:sticky;
+top:0;
+z-index:20;
+background:#101b36f2;
+backdrop-filter:blur(14px);
+border-bottom:1px solid #ffffff18;
+}
+.nav {
+height:76px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+color:white;
+}
+.brand {
+display:flex;
+align-items:center;
+gap:11px;
+font-family:"DM Sans","Tajawal",sans-serif;
+font-weight:800;
+font-size:20px;
+direction:ltr;
+}
+.brand-mark {
+width:38px;
+height:38px;
+border-radius:13px;
+background:linear-gradient(135deg,var(--cyan),#6382ff);
+display:grid;
+place-items:center;
+color:#101b36;
+font-size:19px;
+font-weight:900;
+}
+.brand small {
+display:block;
+font:600 9px "Tajawal";
+letter-spacing:2px;
+color:#9eafd4;
+text-align:left;
+margin-top:1px;
+}
+.navlinks {
+display:flex;
+gap:28px;
+align-items:center;
+font-size:14px;
+color:#d5def2;
+}
+.navlinks a:hover {color:var(--cyan)}
+
+.nav-cta,.btn {
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+border:0;
+border-radius:13px;
+padding:13px 21px;
+background:linear-gradient(135deg,#6380ff,#4268f5);
+color:white;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 10px 24px #4268f53b;
+transition:.2s;
+}
+.nav-cta:hover,.btn:hover {
+transform:translateY(-2px);
+box-shadow:0 14px 28px #4268f54d;
+}
+
+.hero {
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(ellipse at 12% 18%,#4268f54b,transparent 32%),
+radial-gradient(ellipse at 85% 80%,#65d9e82b,transparent 28%),
+linear-gradient(125deg,#101b36,#172747 65%,#1c3155);
+color:white;
+padding:92px 0 88px;
+}
+.hero:after {
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+border:1px solid #ffffff14;
+border-radius:50%;
+left:-170px;
+top:-190px;
+box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff05;
+}
+.hero-grid {
+position:relative;
+z-index:1;
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:55px;
+align-items:center;
+}
+.eyebrow {
+display:inline-flex;
+align-items:center;
+gap:9px;
+border:1px solid #ffffff2a;
+background:#ffffff0d;
+padding:8px 13px;
+border-radius:30px;
+color:#c9d7f4;
+font-size:13px;
+}
+.pulse {
+width:8px;
+height:8px;
+border-radius:50%;
+background:var(--cyan);
+box-shadow:0 0 0 5px #65d9e822;
+}
+.hero h1 {
+font-size:clamp(42px,6vw,70px);
+line-height:1.13;
+margin:23px 0 17px;
+font-weight:900;
+}
+.hero h1 em {
+font-style:normal;
+color:var(--cyan);
+display:block;
+}
+.hero p {
+font-size:18px;
+line-height:1.9;
+color:#c6d2e9;
+max-width:570px;
+margin:0 0 28px;
+}
+.hero-actions {
+display:flex;
+gap:13px;
+flex-wrap:wrap;
+}
+.btn-light {
+background:#ffffff12;
+border:1px solid #ffffff35;
+box-shadow:none;
+color:white;
+}
+.hero-note {
+font-size:12px;
+color:#9eafd4;
+margin-top:18px;
+}
+
+.price-card {
+position:relative;
+max-width:390px;
+margin:auto;
+background:linear-gradient(145deg,#ffffff18,#ffffff09);
+border:1px solid #ffffff35;
+border-radius:28px;
+padding:30px;
+box-shadow:0 28px 80px #050c1c70;
+backdrop-filter:blur(10px);
+transform:rotate(-2deg);
+}
+.price-card:before {
+content:"";
+position:absolute;
+inset:10px;
+border:1px solid #ffffff13;
+border-radius:20px;
+pointer-events:none;
+}
+.price-top {
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:#c9d7f4;
+font-size:13px;
+}
+.limited {
+background:#ffd36a;
+color:#3a2b08;
+border-radius:30px;
+padding:6px 11px;
+font-weight:900;
+font-size:11px;
+}
+.price-label {
+margin-top:35px;
+color:#c8d5ed;
+font-size:15px;
+}
+.price {
+font:800 68px "DM Sans";
+letter-spacing:-3px;
+margin:0;
+color:white;
+direction:ltr;
+text-align:right;
+}
+.price small {
+font:700 18px "Tajawal";
+color:var(--cyan);
+}
+.price-desc {
+color:#b8c7e4;
+font-size:13px;
+}
+.price-divider {
+border:0;
+border-top:1px solid #ffffff25;
+margin:24px 0;
+}
+.mini-list {
+display:grid;
+gap:12px;
+color:#e8efff;
+font-size:14px;
+}
+.mini-list span:before {
+content:"✓";
+color:var(--cyan);
+font-weight:900;
+margin-left:9px;
+}
+.stamp {
+position:absolute;
+bottom:-22px;
+left:-16px;
+background:var(--cyan);
+color:#10203a;
+border-radius:15px;
+padding:13px 17px;
+font-weight:900;
+box-shadow:0 12px 25px #0004;
+transform:rotate(5deg);
+}
+
+.trust {
+background:white;
+border-bottom:1px solid var(--line);
+}
+.trust-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+padding:23px 0;
+}
+.trust-item {
+text-align:center;
+border-left:1px solid var(--line);
+}
+.trust-item:last-child {border:0}
+.trust-item strong {
+display:block;
+font:800 22px "DM Sans";
+color:var(--blue);
+}
+.trust-item span {
+font-size:13px;
+color:var(--muted);
+}
+
+section {padding:88px 0}
+.section-head {
+text-align:center;
+max-width:690px;
+margin:0 auto 42px;
+}
+.kicker {
+color:var(--blue);
+font-size:13px;
+font-weight:900;
+letter-spacing:1px;
+}
+.section-head h2 {
+font-size:clamp(30px,4vw,43px);
+line-height:1.3;
+margin:10px 0;
+color:var(--navy);
+font-weight:900;
+}
+.section-head p {
+color:var(--muted);
+line-height:1.9;
+margin:0;
+font-size:16px;
+}
+
+.subjects {
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+}
+.subject {
+background:white;
+border:1px solid var(--line);
+border-radius:19px;
+padding:23px 17px;
+min-height:180px;
+transition:.2s;
+}
+.subject:hover {
+transform:translateY(-5px);
+border-color:#b8c7ff;
+box-shadow:0 18px 35px #1727470d;
+}
+.subject-num {
+font:700 12px "DM Sans";
+color:#a1acc1;
+}
+.subject-icon {
+width:43px;
+height:43px;
+border-radius:14px;
+background:#eef2ff;
+color:var(--blue);
+display:grid;
+place-items:center;
+font-size:21px;
+margin:17px 0 13px;
+}
+.subject h3 {
+font-size:17px;
+margin:0 0 5px;
+color:var(--navy);
+}
+.subject p {
+margin:0;
+color:var(--muted);
+font-size:12px;
+}
+
+.level-wrap {
+background:var(--navy);
+color:white;
+border-radius:28px;
+padding:36px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+align-items:center;
+}
+.level-wrap h3 {
+font-size:29px;
+margin:0 0 10px;
+}
+.level-wrap p {
+color:#b8c7e4;
+line-height:1.8;
+margin:0;
+}
+.level-tags {
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+.tag {
+border:1px solid #ffffff2b;
+background:#ffffff0d;
+padding:12px 16px;
+border-radius:12px;
+font-size:14px;
+color:#e5edff;
+}
+.tag:before {
+content:"✦";
+color:var(--cyan);
+margin-left:8px;
+}
+
+.method {background:#edf1fb}
+.method-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+.method-card {
+background:white;
+padding:27px;
+border-radius:20px;
+border:1px solid #e5eaf4;
+}
+.method-icon {
+font-size:25px;
+color:var(--blue);
+}
+.method-card h3 {
+margin:15px 0 8px;
+font-size:19px;
+}
+.method-card p {
+margin:0;
+color:var(--muted);
+line-height:1.8;
+font-size:14px;
+}
+
+.schedule-box {
+background:white;
+border:1px solid var(--line);
+border-radius:24px;
+padding:28px;
+box-shadow:0 18px 50px #18284a0a;
+}
+.schedule-top {
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+.schedule-top h3 {
+margin:0;
+font-size:22px;
+}
+.schedule-top span {
+color:var(--blue);
+background:#eef2ff;
+border-radius:30px;
+padding:8px 13px;
+font-size:13px;
+font-weight:800;
+}
+.schedule-grid {
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px;
+}
+.day {
+border:1px solid var(--line);
+border-radius:15px;
+overflow:hidden;
+}
+.day-head {
+background:#f3f6fc;
+padding:12px;
+text-align:center;
+font-weight:900;
+color:var(--navy);
+}
+.lesson {
+padding:12px 10px;
+border-top:1px solid var(--line);
+font-size:13px;
+text-align:center;
+color:#3c4a64;
+}
+.lesson b {
+display:block;
+color:var(--blue);
+font-size:10px;
+margin-bottom:4px;
+}
+.schedule-foot {
+margin-top:16px;
+color:var(--muted);
+font-size:12px;
+line-height:1.7;
+}
+
+.register {
+background:linear-gradient(135deg,#101b36,#1b3155);
+color:white;
+position:relative;
+overflow:hidden;
+}
+.register:before {
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+border:1px solid #ffffff13;
+right:-240px;
+top:-250px;
+box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff05;
+}
+.register-grid {
+position:relative;
+display:grid;
+grid-template-columns:.9fr 1.1fr;
+gap:55px;
+align-items:center;
+}
+.register-copy h2 {
+font-size:clamp(34px,4vw,49px);
+line-height:1.25;
+margin:12px 0;
+}
+.register-copy p {
+color:#bdcbe5;
+line-height:1.9;
+}
+.register-price {
+font:800 43px "DM Sans";
+color:var(--cyan);
+direction:ltr;
+text-align:right;
+margin:25px 0 4px;
+}
+.register-price small {
+font:700 16px "Tajawal";
+}
+.register-copy .tiny {
+font-size:12px;
+color:#91a4c8;
+}
+.form-card {
+background:white;
+color:var(--ink);
+border-radius:24px;
+padding:30px;
+box-shadow:0 25px 70px #050c1c66;
+}
+.form-card h3 {
+font-size:24px;
+margin:0 0 5px;
+}
+.form-card>p {
+color:var(--muted);
+font-size:13px;
+margin:0 0 22px;
+}
+.field {margin-bottom:15px}
+.field label {
+display:block;
+font-weight:800;
+font-size:13px;
+margin-bottom:7px;
+}
+.field input,.field select {
+width:100%;
+border:1px solid #dce2ed;
+border-radius:11px;
+padding:13px 14px;
+background:#fbfcff;
+outline:none;
+color:var(--ink);
+transition:.2s;
+}
+.field input:focus,.field select:focus {
+border-color:var(--blue);
+box-shadow:0 0 0 3px #4268f51a;
+}
+.form-row {
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:13px;
+}
+.form-submit {
+width:100%;
+padding:15px;
+font-size:16px;
+margin-top:4px;
+}
+.privacy {
+font-size:11px;
+color:#8792a7;
+text-align:center;
+margin-top:13px;
+line-height:1.7;
+}
+.error {
+color:#d93650;
+font-size:12px;
+display:none;
+margin-top:5px;
+}
+
+footer {
+background:#0b1429;
+color:#9cabc8;
+padding:25px 0;
+}
+.footer-row {
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+font-size:12px;
+}
+.footer-brand {
+font:800 16px "DM Sans";
+color:white;
+direction:ltr;
+}
+.footer-brand span {color:var(--cyan)}
+
+@media(max-width:900px) {
+.hero-grid {
+grid-template-columns:1fr;
+gap:45px;
+}
+.hero-copy {text-align:center}
+.hero p {margin-inline:auto}
+.hero-actions {justify-content:center}
+.price-card {width:min(100%,390px)}
+.subjects {grid-template-columns:repeat(3,1fr)}
+.schedule-grid {grid-template-columns:repeat(3,1fr)}
+.register-grid {
+grid-template-columns:1fr;
+gap:30px;
+}
+.register-copy {text-align:center}
+.register-price {text-align:center}
+}
+
+@media(max-width:620px) {
+.container {width:min(100% - 28px,1160px)}
+.nav {height:66px}
+.navlinks {display:none}
+.nav-cta {padding:10px 13px;font-size:12px}
+.hero {padding:65px 0}
+.hero h1 {font-size:43px}
+.hero p {font-size:15px}
+.trust-grid {
+grid-template-columns:1fr;
+gap:15px;
+}
+.trust-item {
+border:0;
+border-bottom:1px solid var(--line);
+padding-bottom:13px;
+}
+.trust-item:last-child {border:0}
+.subjects {
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+.subject {
+padding:17px 13px;
+min-height:160px;
+}
+.subject h3 {font-size:15px}
+.level-wrap {
+grid-template-columns:1fr;
+padding:25px;
+}
+.method-grid {grid-template-columns:1fr}
+.schedule-box {padding:17px}
+.schedule-grid {
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+}
+.day-head {font-size:13px}
+.lesson {
+font-size:12px;
+padding:10px 5px;
+}
+.form-card {padding:22px}
+.form-row {grid-template-columns:1fr}
+.section-head {margin-bottom:30px}
+section {padding:65px 0}
+}
+</style>
+</head>
+
 <body>
 
-  <div class="topbar">
-    Offre Regional — التسجيل مفتوح الآن
-  </div>
+<div class="topbar">
+<div class="container">
+<span>عرض خاص لتلاميذ الأولى باك</span>
+<span><strong>499 DH</strong> · السنة الدراسية كاملة</span>
+</div>
+</div>
 
-  <main class="container">
+<header>
+<div class="container nav">
+<a class="brand" href="#">
+<span class="brand-mark">OR</span>
+<span>OFFRE REGIONAL
+<small>LE RÉGIONAL, À PORTÉE DE MAIN</small>
+</span>
+</a>
 
-    <section class="intro">
-      <h1>
-        استعد للنجاح في<br>
-        <span>الأولى باك</span>
-      </h1>
+<nav class="navlinks">
+<a href="#subjects">المواد</a>
+<a href="#method">طريقة التعلم</a>
+<a href="#schedule">الجدول الزمني</a>
+<a href="#register">التسجيل</a>
+</nav>
 
-      <p>
-        استفد من عرض Offre Regional واستعد بشكل أفضل
-        للاستحقاقات الدراسية.
-      </p>
+<a class="nav-cta" href="#register">سجّل الآن ←</a>
+</div>
+</header>
 
-      <ul class="features">
-        <li>✓ عرض مخصص لتلاميذ الأولى باك</li>
-        <li>✓ اختر الشعبة المناسبة لك</li>
-        <li>✓ أكد تسجيلك عبر واتساب</li>
-      </ul>
-    </section>
+<main>
 
-    <section class="form-card">
-      <h2>سجل الآن</h2>
-      <p class="subtitle">املأ المعلومات التالية لإتمام طلب التسجيل.</p>
+<section class="hero">
+<div class="container hero-grid">
 
-      <div class="price">
-        <span>ثمن العرض</span>
-        <strong>499 DH</strong>
-      </div>
+<div class="hero-copy">
+<div class="eyebrow"><i class="pulse"></i> برنامج دعم ومراجعة للأولى باك</div>
 
-      <form id="registrationForm">
+<h1>خدم بذكاء…<em>الجهوي فجيب.</em></h1>
 
-        <div class="field">
-          <label for="fullName">الاسم الكامل</label>
-          <input
-            type="text"
-            id="fullName"
-            placeholder="أدخل اسمك الكامل"
-            autocomplete="name"
-            required
-          >
-          <div class="error" id="nameError">
-            المرجو إدخال اسم صحيح.
-          </div>
-        </div>
+<p>
+خمسة مواد، برنامج أسبوعي واضح، ومراجعة منظمة تساعدك تفهم الدروس وتستعد للامتحان الجهوي بثقة ومنهجية.
+</p>
 
-        <div class="field">
-          <label for="phone">رقم الهاتف</label>
-          <input
-            type="tel"
-            id="phone"
-            placeholder="06XXXXXXXX"
-            autocomplete="tel"
-            required
-          >
-          <div class="error" id="phoneError">
-            المرجو إدخال رقم هاتف مغربي صحيح.
-          </div>
-        </div>
+<div class="hero-actions">
+<a class="btn" href="#register">استفد من العرض الآن ↙</a>
+<a class="btn btn-light" href="#subjects">اكتشف المواد</a>
+</div>
 
-        <div class="field">
-          <label for="branch">الشعبة</label>
-          <select id="branch" required>
-            <option value="">اختر الشعبة</option>
-            <option value="علوم رياضية">علوم رياضية</option>
-            <option value="علوم تجريبية">علوم تجريبية</option>
-            <option value="شعبة العلوم الاقتصادية والتدبير">
-              شعبة العلوم الاقتصادية والتدبير
-            </option>
-          </select>
-        </div>
+<div class="hero-note">
+للأولى باك · ثلاث شعب · حصتان أسبوعياً لكل مادة
+</div>
+</div>
 
-        <div class="field">
-          <label for="level">المستوى الدراسي</label>
-          <input
-            type="text"
-            id="level"
-            value="الأولى باك"
-            readonly
-          >
-        </div>
+<div class="price-card">
+<div class="price-top">
+<span>OFFRE REGIONAL / 2027</span>
+<span class="limited">عرض مميز</span>
+</div>
 
-        <button type="submit" class="form-submit">
-          تأكيد طلب التسجيل ←
-        </button>
+<div class="price-label">استثمر في استعدادك للجهوي</div>
+<div class="price">499 <small>DH</small></div>
+<div class="price-desc">كتخلصها مرة وحدة في السنة الدراسية كاملة</div>
 
-        <p class="privacy">
-          سيتم استخدام معلوماتك لتسجيل الطلب والتواصل معك بشأن العرض عبر واتساب.
-        </p>
+<hr class="price-divider">
 
-        <div class="status-message" id="statusMessage"></div>
+<div class="mini-list">
+<span>5 مواد أساسية للامتحان الجهوي</span>
+<span>10 حصص أسبوعياً موزعة بانتظام</span>
+<span>برنامج موجه للأولى باك</span>
+</div>
 
-      </form>
-    </section>
+<div class="stamp">الجهوي فجيب ✓</div>
+</div>
 
-  </main>
+</div>
+</section>
 
-  <footer>
-    © <span id="year"></span> Offre Regional. جميع الحقوق محفوظة.
-  </footer>
+<div class="trust">
+<div class="container trust-grid">
+<div class="trust-item">
+<strong>05</strong>
+<span>مواد دراسية</span>
+</div>
+<div class="trust-item">
+<strong>10</strong>
+<span>حصص في الأسبوع</span>
+</div>
+<div class="trust-item">
+<strong>03</strong>
+<span>شعب متاحة</span>
+</div>
+</div>
+</div>
 
-  <script>
+<section id="subjects">
+<div class="container">
+
+<div class="section-head">
+<div class="kicker">برنامجك الدراسي</div>
+<h2>كل المواد اللي تحتاجها،<br>في عرض واحد.</h2>
+<p>ركز على المواد الأساسية للامتحان الجهوي، وراجعها وفق برنامج أسبوعي متوازن.</p>
+</div>
+
+<div class="subjects">
+
+<article class="subject">
+<div class="subject-num">01 / 05</div>
+<div class="subject-icon">∑</div>
+<h3>الرياضيات</h3>
+<p>Mathématiques</p>
+</article>
+
+<article class="subject">
+<div class="subject-num">02 / 05</div>
+<div class="subject-icon">⌖</div>
+<h3>الاجتماعيات</h3>
+<p>Histoire-Géographie</p>
+</article>
+
+<article class="subject">
+<div class="subject-num">03 / 05</div>
+<div class="subject-icon">✧</div>
+<h3>التربية الإسلامية</h3>
+<p>Éducation Islamique</p>
+</article>
+
+<article class="subject">
+<div class="subject-num">04 / 05</div>
+<div class="subject-icon">A</div>
+<h3>اللغة الفرنسية</h3>
+<p>Français</p>
+</article>
+
+<article class="subject">
+<div class="subject-num">05 / 05</div>
+<div class="subject-icon">ع</div>
+<h3>اللغة العربية</h3>
+<p>اللغة العربية</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section style="padding-top:0">
+<div class="container">
+<div class="level-wrap">
+
+<div>
+<div class="kicker" style="color:#65d9e8">المستوى والشعب</div>
+<h3>موجه للأولى باك فقط.</h3>
+<p>اختَر الشعبة ديالك أثناء التسجيل باش نوجهو طلبك بالشكل الصحيح.</p>
+</div>
+
+<div class="level-tags">
+<span class="tag">علوم رياضية</span>
+<span class="tag">علوم تجريبية</span>
+<span class="tag">شعبة العلوم الاقتصادية والتدبير</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="method" id="method">
+<div class="container">
+
+<div class="section-head">
+<div class="kicker">طريقة الاستعداد</div>
+<h2>ماشي غير تقرا…<br>نظّم المراجعة ديالك.</h2>
+<p>خطة واضحة كتعاونك توزع مجهودك على المواد الخمسة خلال الأسبوع.</p>
+</div>
+
+<div class="method-grid">
+
+<article class="method-card">
+<div class="method-icon">◎</div>
+<h3>مراجعة منتظمة</h3>
+<p>حصتان أسبوعياً لكل مادة باش تبقى متابع الدروس وما تراكمش عليك المراجعة.</p>
+</article>
+
+<article class="method-card">
+<div class="method-icon">⌁</div>
+<h3>تنظيم واضح</h3>
+<p>جدول أسبوعي موزع على خمسة أيام، مع حصتين في كل يوم.</p>
+</article>
+
+<article class="method-card">
+<div class="method-icon">↗</div>
+<h3>استعداد بثقة</h3>
+<p>خلي المراجعة عادة مستمرة، وخدم على الفهم والتطبيق خطوة بخطوة.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="schedule">
+<div class="container">
+
+<div class="section-head">
+<div class="kicker">التنظيم الأسبوعي</div>
+<h2>جدولك الزمني،<br>خطوة بخطوة.</h2>
+<p>كل مادة عندها حصتان في الأسبوع. المجموع: 10 حصص أسبوعياً.</p>
+</div>
+
+<div class="schedule-box">
+
+<div class="schedule-top">
+<h3>البرنامج الأسبوعي</h3>
+<span>10 حصص · 5 أيام</span>
+</div>
+
+<div class="schedule-grid">
+
+<div class="day">
+<div class="day-head">الإثنين</div>
+<div class="lesson"><b>الحصة 01</b>الرياضيات</div>
+<div class="lesson"><b>الحصة 02</b>الاجتماعيات</div>
+</div>
+
+<div class="day">
+<div class="day-head">الثلاثاء</div>
+<div class="lesson"><b>الحصة 01</b>الفرنسية</div>
+<div class="lesson"><b>الحصة 02</b>التربية الإسلامية</div>
+</div>
+
+<div class="day">
+<div class="day-head">الأربعاء</div>
+<div class="lesson"><b>الحصة 01</b>الرياضيات</div>
+<div class="lesson"><b>الحصة 02</b>اللغة العربية</div>
+</div>
+
+<div class="day">
+<div class="day-head">الخميس</div>
+<div class="lesson"><b>الحصة 01</b>الاجتماعيات</div>
+<div class="lesson"><b>الحصة 02</b>الفرنسية</div>
+</div>
+
+<div class="day">
+<div class="day-head">الجمعة</div>
+<div class="lesson"><b>الحصة 01</b>التربية الإسلامية</div>
+<div class="lesson"><b>الحصة 02</b>اللغة العربية</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="register" id="register">
+<div class="container register-grid">
+
+<div class="register-copy">
+<div class="kicker" style="color:#65d9e8">بداية الاستعداد</div>
+<h2>باقي غير خطوة…<br>والجهوي فجيب.</h2>
+<p>عمر الاستمارة بمعلومات صحيحة، أكد التسجيل، وغادي تنتقل لصفحة تأكيد الطلب ثم واتساب.</p>
+
+<div class="register-price">499 <small>DH</small></div>
+<div class="tiny">عرض الأولى باك · خمس مواد · حصتان أسبوعياً لكل مادة</div>
+</div>
+
+<form class="form-card" id="registrationForm">
+
+<h3>استمارة التسجيل</h3>
+<p>دخل المعلومات ديالك باش نوجدو طلب التسجيل.</p>
+
+<div class="field">
+<label for="fullName">الاسم الكامل</label>
+<input id="fullName" name="fullName" type="text" placeholder="مثال: محمد العلوي" autocomplete="name" required minlength="3">
+<div class="error" id="nameError">يرجى إدخال الاسم الكامل.</div>
+</div>
+
+<div class="form-row">
+
+<div class="field">
+<label for="phone">رقم الهاتف</label>
+<input id="phone" name="phone" type="tel" placeholder="06XXXXXXXX" autocomplete="tel" required>
+<div class="error" id="phoneError">أدخل رقم هاتف صحيح.</div>
+</div>
+
+<div class="field">
+<label for="branch">الشعبة</label>
+<select id="branch" name="branch" required>
+<option value="">اختر الشعبة</option>
+<option>علوم رياضية</option>
+<option>علوم تجريبية</option>
+<option>شعبة العلوم الاقتصادية والتدبير</option>
+</select>
+</div>
+
+</div>
+
+<div class="field">
+<label for="level">المستوى</label>
+<input id="level" value="الأولى باك" readonly>
+</div>
+
+<button class="btn form-submit" type="submit">
+تأكيد طلب التسجيل ←
+</button>
+
+<div class="privacy">
+بالضغط على تأكيد، سيتم إعداد رسالة طلبك للانتقال إلى واتساب. لن تُرسل رسالة تلقائياً دون تأكيدك داخل واتساب.
+</div>
+
+</form>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-row">
+<div class="footer-brand">OFFRE <span>REGIONAL</span></div>
+<div>الجهوي فجيب · عرض الأولى باك</div>
+<div>© <span id="year"></span> Offre Regional. جميع الحقوق محفوظة.</div>
+</div>
+</footer>
+
+<script>
 const SUPABASE_URL = "https://yzectimipxgekzlkjkoo.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
