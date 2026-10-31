@@ -228,7 +228,7 @@
     }
   </style>
 </head>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <body>
 
   <div class="topbar">
@@ -336,107 +336,111 @@
   </footer>
 
   <script>
-    // Supabase configuration
-    const SUPABASE_URL = "https://yzectimipxgekzlkjkoo.supabase.co";
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_V5nUCWgydWDKr2mAHmHG2A_dZIYFYIF";
+const SUPABASE_URL = "https://yzectimipxgekzlkjkoo.supabase.co";
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_V5nUCWgydWDKr2mAHmHG2A_dZIYFYIF";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const WHATSAPP_NUMBER = "212663271459";
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+const form = document.getElementById("registrationForm");
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const button = form.querySelector(".form-submit");
+
+  const name = document.getElementById("fullName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const branch = document.getElementById("branch").value;
+
+  const phoneClean = phone.replace(/[\s().-]/g, "");
+
+  const validMoroccan =
+    /^(?:(?:\+212|00212|212)?[5-7]\d{8}|0[5-7]\d{8})$/.test(phoneClean);
+
+  document.getElementById("nameError").style.display =
+    name.length >= 3 ? "none" : "block";
+
+  document.getElementById("phoneError").style.display =
+    validMoroccan ? "none" : "block";
+
+  if (name.length < 3 || !validMoroccan || !branch) {
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "جاري حفظ التسجيل...";
+
+  try {
+    const registrationId = crypto.randomUUID();
+
+    const registration = {
+      id: registrationId,
+      full_name: name,
+      phone: phoneClean,
+      branch: branch,
+      level: "الأولى باك",
+      offer: "Offre Regional",
+      price: 499
+    };
+
+    // حفظ التسجيل في Supabase
+    const { error } = await supabaseClient
+      .from("registrations")
+      .insert([registration]);
+
+    if (error) {
+      throw error;
+    }
+
+    // حفظ المعلومات محلياً لعرضها في صفحة الشكر
+    const sessionData = {
+      id: registrationId,
+      name: name,
+      phone: phoneClean,
+      branch: branch,
+      level: "الأولى باك",
+      offer: "Offre Regional",
+      price: "499 DH"
+    };
+
+    sessionStorage.setItem(
+      "offreRegionalRegistration",
+      JSON.stringify(sessionData)
     );
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    // Meta Pixel: Lead بعد نجاح التسجيل فقط
+    if (typeof fbq === "function") {
+      fbq("track", "Lead", {}, {
+        eventID: registrationId
+      });
+    }
 
-    const form = document.getElementById("registrationForm");
-    const submitButton = form.querySelector(".form-submit");
-    const statusMessage = document.getElementById("statusMessage");
+    // الانتقال إلى صفحة الشكر
+    window.location.href = "tankupage.html";
 
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
+  } catch (error) {
 
-      const name = document.getElementById("fullName").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const branch = document.getElementById("branch").value;
+    console.error("Supabase Error:", error);
 
-      const phoneClean = phone.replace(/[\s().-]/g, "");
+    alert(
+      "تعذر حفظ التسجيل حالياً. المرجو المحاولة مرة أخرى."
+    );
 
-      const validMoroccan =
-        /^(?:(?:\+212|00212|212)?[5-7]\d{8}|0[5-7]\d{8})$/.test(phoneClean);
-
-      document.getElementById("nameError").style.display =
-        name.length >= 3 ? "none" : "block";
-
-      document.getElementById("phoneError").style.display =
-        validMoroccan ? "none" : "block";
-
-      if (name.length < 3 || !validMoroccan || !branch) {
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = "جاري حفظ التسجيل...";
-      statusMessage.style.display = "none";
-
-      try {
-        const registrationId = crypto.randomUUID();
-
-        const registration = {
-          id: registrationId,
-          full_name: name,
-          phone: phoneClean,
-          branch: branch,
-          level: "الأولى باك",
-          offer: "Offre Regional",
-          price: 499
-        };
-
-        const { error } = await supabaseClient
-          .from("registrations")
-          .insert([registration]);
-
-        if (error) {
-          throw error;
-        }
-
-        const sessionData = {
-          id: registrationId,
-          name: name,
-          phone: phoneClean,
-          branch: branch,
-          level: "الأولى باك",
-          offer: "Offre Regional",
-          price: "499 DH"
-        };
-
-        sessionStorage.setItem(
-          "offreRegionalRegistration",
-          JSON.stringify(sessionData)
-        );
-
-        // Meta Pixel: Lead فقط بعد نجاح الحفظ
-        if (typeof fbq === "function") {
-          fbq("track", "Lead", {}, {
-            eventID: registrationId
-          });
-        }
-
-        window.location.href = "tankupage.html";
-
-      } catch (error) {
-        console.error("Registration error:", error);
-
-        statusMessage.textContent =
-          "تعذر حفظ التسجيل. تحقق من اتصال الإنترنت وحاول مرة أخرى.";
-
-        statusMessage.style.display = "block";
-
-        submitButton.disabled = false;
-        submitButton.textContent = "تأكيد طلب التسجيل ←";
-      }
-    });
-  </script>
+    button.disabled = false;
+    button.textContent = "تأكيد طلب التسجيل ←";
+  }
+});
+</script>
 
 </body>
 </html>
